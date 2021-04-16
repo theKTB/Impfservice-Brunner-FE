@@ -1,7 +1,7 @@
 import { Component, VERSION } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'isb-root',
   templateUrl: './app.component.html'
 })
 export class AppComponent  {
