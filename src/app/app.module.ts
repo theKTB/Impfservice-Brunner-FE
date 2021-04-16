@@ -5,6 +5,9 @@ import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
+import { VaccinationListComponent } from './vaccination-list/vaccination-list.component';
+import { VaccinationListItemComponent } from './vaccination-list-item/vaccination-list-item.component';
+import { VaccinationDetailsComponent } from './home/vaccination-details/vaccination-details.component';
 
 @NgModule({
   imports: [
@@ -13,7 +16,7 @@ import { HttpClientModule } from "@angular/common/http";
     AppRoutingModule,
     HttpClientModule
   ],
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, VaccinationListComponent, VaccinationListItemComponent, VaccinationDetailsComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
