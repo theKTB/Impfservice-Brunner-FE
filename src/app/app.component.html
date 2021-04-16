@@ -1,6 +1,19 @@
-<div class="ui three item tabs menu">
-  <!-- Links ohne href! ersetzen durch routerLink -->
+<div class="ui secondary  menu">
   <a routerLink="home" routerLinkActive="active" class="item">Home</a>
+  <a class="item">
+    Termine
+  </a>
+  <div class="right menu">
+    <!--<div class="item">
+      <div class="ui icon input">
+        <input type="text" placeholder="Search...">
+        <i class="search link icon"></i>
+      </div>
+    </div>-->
+    <a routerLink="login" routerLinkActive="active" class="ui item"><i class="user icon"></i>
+      Login
+    </a>
+  </div>
 </div>
-<!-- Komponente, die angezeigt werden soll, weil route aufgerufen wurde -->
+
 <router-outlet></router-outlet>
