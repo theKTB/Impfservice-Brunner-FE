@@ -1,11 +1,16 @@
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: "isb-vaccination-list",
+  selector: "is-vaccination-list",
   templateUrl: "./vaccination-list.component.html"
 })
 export class VaccinationListComponent implements OnInit {
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.is.getAllVaccinations().subscribe(res => {
+      this.books = res;
+      console.log(this.books);
+    });
+  }
 }

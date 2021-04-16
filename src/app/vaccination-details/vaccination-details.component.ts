@@ -1,8 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
-
 @Component({
-  selector: "isb-vaccination-details",
+  selector: "is-vaccination-details",
   templateUrl: "./vaccination-details.component.html"
 })
 export class VaccinationDetailsComponent implements OnInit {

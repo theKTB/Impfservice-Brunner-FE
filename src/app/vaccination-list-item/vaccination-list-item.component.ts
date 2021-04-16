@@ -3,7 +3,7 @@ import { Vaccination } from "../shared/vaccination";
 import { ImpfserviceService } from "../shared/impfservice.service";
 
 @Component({
-  selector: "isb-vaccination-list-item",
+  selector: "is-vaccination-list-item",
   templateUrl: "./vaccination-list-item.component.html"
 })
 export class VaccinationListItemComponent implements OnInit {
