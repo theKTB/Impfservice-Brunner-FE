@@ -1,16 +1,20 @@
 import { Component, OnInit } from "@angular/core";
+import { Vaccination } from "../shared/vaccination";
+import { ImpfserviceService } from "../shared/impfservice.service";
 
 @Component({
   selector: "is-vaccination-list",
   templateUrl: "./vaccination-list.component.html"
 })
 export class VaccinationListComponent implements OnInit {
-  constructor() {}
+  vaccinations: Vaccination[];
+
+  constructor(private is: ImpfserviceService) {}
 
   ngOnInit() {
     this.is.getAllVaccinations().subscribe(res => {
-      this.books = res;
-      console.log(this.books);
+      this.vaccinations = res;
+      console.log(this.vaccinations);
     });
   }
 }

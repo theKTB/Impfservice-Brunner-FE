@@ -9,7 +9,7 @@ import { ImpfserviceService } from "../shared/impfservice.service";
 export class VaccinationListItemComponent implements OnInit {
   vaccinations: Vaccination[];
 
-  constructor(private isb: ImpfserviceService) {}
+  constructor(private is: ImpfserviceService) {}
 
   ngOnInit() {}
 }
