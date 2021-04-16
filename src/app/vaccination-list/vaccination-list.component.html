@@ -1,9 +1,10 @@
 <div class="ui middle aligned selection divided list">
   <!--am schluss von a fehlt noch der Link auf die Detailseite: [routerLink]="vaccination.id"-->
-  <a *ngFor="let vaccination of vaccinations" class="item is-vaccination-list-item" [vaccination]="vaccination">
-  </a>
+  <a *ngFor="let vaccination of vaccinations" class="item is-vaccination-list-item" vaccination="vaccination"></a>
+  
   <div *ngIf="!vaccinations" class="ui active dimmer">
     <div class="ui large text loader">Daten werden geladen</div>
   </div>
   <p *ngIf="vaccinations && !vaccinations.length">Es wurden noch keine Impfertermineeingetragen</p>
+  
 </div>
