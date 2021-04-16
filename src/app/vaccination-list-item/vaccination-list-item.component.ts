@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { Vaccination } from "../shared/vaccination";
 import { ImpfserviceService } from "../shared/impfservice.service";
 
@@ -7,7 +7,7 @@ import { ImpfserviceService } from "../shared/impfservice.service";
   templateUrl: "./vaccination-list-item.component.html"
 })
 export class VaccinationListItemComponent implements OnInit {
-  vaccinations: Vaccination[];
+  @Input() vaccination: Vaccination;
 
   constructor(private is: ImpfserviceService) {}
 
