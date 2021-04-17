@@ -5,9 +5,9 @@ import { catchError, retry } from "rxjs/operators";
 import { Vaccination } from "./vaccination";
 
 @Injectable()
-export class ImpfserviceService {
+export class VaccinationService {
   private api =
-    "http://impfservice-brunner21.s1810456006.student.kwmhgb.at/api";
+    "https://impfservice-brunner21.s1810456006.student.kwmhgb.at/api";
 
   constructor(private http: HttpClient) {}
 

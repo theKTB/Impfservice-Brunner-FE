@@ -18,8 +18,7 @@ h2 {
 }
 
 body {
-  background-color: blanchedalmond !important;
-  background: repeating-linear-gradient(90deg, #dddddd, #dddddd 2px, white  2px, white 100px) !important;
+  /*background: repeating-linear-gradient(90deg, #dddddd, #dddddd 2px, white  2px, white 100px) !important;*/
   color: #444444 !important;
 }
 .column {

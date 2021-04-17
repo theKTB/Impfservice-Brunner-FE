@@ -1,18 +1,24 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { Vaccination } from "../shared/vaccination";
-import { ImpfserviceService } from "../shared/impfservice.service";
+import { VaccinationService } from "../shared/vaccinationservice.service";
 
 @Component({
-  selector: "is-vaccination-list",
+  selector: "vs-vaccination-list",
   templateUrl: "./vaccination-list.component.html"
 })
 export class VaccinationListComponent implements OnInit {
   vaccinations: Vaccination[];
 
-  constructor(private is: ImpfserviceService) {}
+  @Output() showDetailsEvent = new EventEmitter<Vaccination>();
+
+  constructor(private vs: VaccinationService) {}
+
+  showDetails(vaccination: Vaccination) {
+    this.showDetailsEvent.emit(vaccination);
+  }
 
   ngOnInit() {
-    this.is.getAllVaccinations().subscribe(res => {
+    this.vs.getAllVaccinations().subscribe(res => {
       this.vaccinations = res;
       console.log(this.vaccinations);
     });

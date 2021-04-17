@@ -8,7 +8,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { VaccinationListComponent } from "./vaccination-list/vaccination-list.component";
 import { VaccinationListItemComponent } from "./vaccination-list-item/vaccination-list-item.component";
 import { VaccinationDetailsComponent } from "./vaccination-details/vaccination-details.component";
-import { ImpfserviceService } from "./shared/impfservice.service";
+import { VaccinationService } from "./shared/vaccinationservice.service";
 
 @NgModule({
   imports: [
@@ -25,6 +25,6 @@ import { ImpfserviceService } from "./shared/impfservice.service";
     VaccinationDetailsComponent
   ],
   bootstrap: [AppComponent],
-  providers: [ImpfserviceService]
+  providers: [VaccinationService]
 })
 export class AppModule {}
