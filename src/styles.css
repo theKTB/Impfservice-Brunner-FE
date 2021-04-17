@@ -19,10 +19,7 @@ h2 {
 
 body {
   /*background: repeating-linear-gradient(90deg, #dddddd, #dddddd 2px, white  2px, white 100px) !important;*/
-  background-image: url('https://github.com/theKTB/Impfservice-Brunner-FE/blob/master/src/app/img/hand-impfstoff-01.svg') !important;
-  background-repeat: no-repeat !important;
-  background-attachment: fixed !important;
-  background-position: center !important;
+  background: url("/img/hand-impfstoff-01.svg") !important;
   color: #444444 !important;
 }
 .column {
