@@ -9,7 +9,11 @@ import { VaccinationListComponent } from "./vaccination-list/vaccination-list.co
 import { VaccinationListItemComponent } from "./vaccination-list-item/vaccination-list-item.component";
 import { VaccinationDetailsComponent } from "./vaccination-details/vaccination-details.component";
 import { VaccinationService } from "./shared/vaccinationservice.service";
-import { MapComponent } from './map/map.component';
+import { registerLocaleData } from "@angular/common";
+import localeDe from "@angular/common/locales/de";
+import { LOCALE_ID } from "@angular/core";
+
+registerLocaleData(localeDe);
 
 @NgModule({
   imports: [
@@ -23,10 +27,9 @@ import { MapComponent } from './map/map.component';
     HomeComponent,
     VaccinationListComponent,
     VaccinationListItemComponent,
-    VaccinationDetailsComponent,
-    MapComponent
+    VaccinationDetailsComponent
   ],
   bootstrap: [AppComponent],
-  providers: [VaccinationService]
+  providers: [VaccinationService, { provide: LOCALE_ID, useValue: "de" }]
 })
 export class AppModule {}
