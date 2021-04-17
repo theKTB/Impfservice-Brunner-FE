@@ -19,6 +19,9 @@ h2 {
 
 body {
   /*background: repeating-linear-gradient(90deg, #dddddd, #dddddd 2px, white  2px, white 100px) !important;*/
+  background-image: url(/img/hand-nadel-02) !important;
+  background-repeat: no-repeat !important;
+
   color: #444444 !important;
 }
 .column {
