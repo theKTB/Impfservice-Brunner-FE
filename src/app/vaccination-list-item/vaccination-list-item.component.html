@@ -1,6 +1,6 @@
-<tr>
-  <td>{{vaccination?.id}}</td>
-  <td>{{vaccination?.from}}</td>
-  <td>{{vaccination?.to}}</td>
-  <td>{{vaccination?.maxPatients}}</td>
-</tr>
+<td>{{vaccination?.from | date:'dd.MM.yyyy'}}</td>
+<td>{{vaccination?.from | date:'hh:mm'}}</td>
+<td>{{vaccination?.to | date:'hh:mm'}}</td>
+<td>{{vaccination?.location?.name}}</td>
+<td>{{vaccination?.maxPatients}}</td>
+<td><a [routerLink]="'../vaccinations/1'">Details</a></td>

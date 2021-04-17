@@ -15,7 +15,7 @@ export class VaccinationFactory {
       typeof rawVaccination.to === "string"
         ? new Date(rawVaccination.to)
         : rawVaccination.to,
-      rawVaccination.maxPatients,
+      rawVaccination.maxParticipants,
       rawVaccination.location_id
     );
   }

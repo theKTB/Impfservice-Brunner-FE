@@ -3,10 +3,10 @@ export { Location } from "./location";
 
 export class Vaccination {
   constructor(
-    public id: number,
+    public id: string,
     public from: Date,
     public to: Date,
     public maxPatients: number,
-    public location_id: Location
+    public location: Location
   ) {}
 }

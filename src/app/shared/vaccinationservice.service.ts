@@ -20,28 +20,28 @@ export class VaccinationService {
 
   getVaccination(id: number): Observable<Vaccination> {
     return this.http
-      .get<Vaccination>(`${this.api}/vaccination/${id}`)
+      .get<Vaccination>(`${this.api}/vaccinations/${id}`)
       .pipe(retry(3))
       .pipe(catchError(this.errorHandler));
   }
 
-  removeVaccination(id: String): Observable<any> {
+  removeVaccination(id: Number): Observable<any> {
     return this.http
-      .delete(`${this.api}/vaccination/${id}`)
+      .delete(`${this.api}/vaccinations/${id}`)
       .pipe(retry(3))
       .pipe(catchError(this.errorHandler));
   }
 
   createVaccination(vaccination: Vaccination): Observable<any> {
     return this.http
-      .post(`${this.api}/vaccination`, vaccination)
+      .post(`${this.api}/vaccinations`, vaccination)
       .pipe(retry(3))
       .pipe(catchError(this.errorHandler));
   }
 
   updateVaccination(vaccination: Vaccination): Observable<any> {
     return this.http
-      .put(`${this.api}/vaccination/${vaccination.id}`, vaccination)
+      .put(`${this.api}/vaccinations/${vaccination.id}`, vaccination)
       .pipe(retry(3))
       .pipe(catchError(this.errorHandler));
   }
