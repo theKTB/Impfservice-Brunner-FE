@@ -9,6 +9,7 @@ import { VaccinationListComponent } from "./vaccination-list/vaccination-list.co
 import { VaccinationListItemComponent } from "./vaccination-list-item/vaccination-list-item.component";
 import { VaccinationDetailsComponent } from "./vaccination-details/vaccination-details.component";
 import { VaccinationService } from "./shared/vaccinationservice.service";
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import { VaccinationService } from "./shared/vaccinationservice.service";
     HomeComponent,
     VaccinationListComponent,
     VaccinationListItemComponent,
-    VaccinationDetailsComponent
+    VaccinationDetailsComponent,
+    MapComponent
   ],
   bootstrap: [AppComponent],
   providers: [VaccinationService]

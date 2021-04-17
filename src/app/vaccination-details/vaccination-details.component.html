@@ -1,3 +1,20 @@
+<h1>impftermin</h1>
+
+<h2>Datum</h2>
+<p>{{vaccination?.from | date:'EEEE dd.MM.yyyy'}} von {{vaccination?.from | date:'HH:mm'}} Uhr bis {{vaccination?.to | date:'HH:mm'}} Uhr</p>
+
+<h2>Ort</h2>
 <p>
-vaccination-details works!
+{{vaccination?.location?.name}}<br>
+{{vaccination?.location?.street}} {{vaccination?.location?.houseNumber}}<br>
+{{vaccination?.location?.zipCode}} {{vaccination?.location?.city}}<br>
+
+<div id="mapid"></div>
+
+
+
+<p>
+  vaccination-details works!
 </p>
+
+<button routerLink=".." class="ui black button">Zurück zu den Terminen</button>

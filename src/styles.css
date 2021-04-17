@@ -24,3 +24,6 @@ body {
 .column {
   max-width: 500px;
 }
+
+#mapid { 
+  height: 180px; }

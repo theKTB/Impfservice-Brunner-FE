@@ -5,6 +5,7 @@ import { VaccinationFactory } from "../shared/vaccination-factory";
 import { VaccinationService } from "../shared/vaccinationservice.service";
 
 
+
 @Component({
   selector: "vs-vaccination-details",
   templateUrl: "./vaccination-details.component.html"
