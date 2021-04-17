@@ -7,7 +7,7 @@ import { Vaccination } from "./vaccination";
 @Injectable()
 export class ImpfserviceService {
   private api =
-    "https://impfservice-brunner21.s1810456006.student.kwmhgb.at/api";
+    "http://impfservice-brunner21.s1810456006.student.kwmhgb.at/api";
 
   constructor(private http: HttpClient) {}
 
