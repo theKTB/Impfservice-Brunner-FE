@@ -16,7 +16,11 @@ export class VaccinationFormComponent implements OnInit {
   vaccination = VaccinationFactory.empty();
   isUpdatingVaccination = false;
   errors: { [key: string]: string } = {};
-  locations: FormArray;
+  locations = [
+    { id: 1, city: "linz" },
+    { id: 2, city: "linz" },
+    { id: 3, city: "linz" }
+  ];
 
   constructor(
     private fb: FormBuilder,

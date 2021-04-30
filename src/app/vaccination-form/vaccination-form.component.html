@@ -1,0 +1,39 @@
+<h1>Impfformular</h1>
+<form
+  class="ui large form"
+  [formGroup]="vaccinationForm"
+  (ngSubmit)="submitForm()"
+>
+  <input type="hidden" name="id" />
+
+  <div class="field">
+    <div class="ui calendar">
+      <div class="ui input left icon">
+        <i class="calendar icon"></i>
+        <input
+          type="text"
+          name="date_estimated_arrival"
+          placeholder="Startzeitpunkt"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!--
+<select class="custom-select" formControlName="cityName">
+   <option value="" disabled>Ort auswählen</option>
+   <option *ngFor="let c of locations" [ngValue]="c.value">{{c.city}}</option>
+</select>
+
+<div class="field">
+  <label>Startdatum</label>
+  <input formControlName="from">
+  <div *ngIf="errors.from" class="ui negative message"> {{ errors.title }} </div>
+</div>
+
+-->
+
+  <button type="submit" class="ui button" [disabled]="vaccinationForm.invalid">
+    Speichern
+  </button>
+</form>
