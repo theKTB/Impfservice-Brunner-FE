@@ -1,6 +1,8 @@
 import { Component, VERSION } from "@angular/core";
+import { ToastrService } from "ngx-toastr";
 import { AuthenticationService } from "./shared/authentication.service";
 import { Vaccination } from "./shared/user";
+
 
 @Component({
   selector: "vs-root",
