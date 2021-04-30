@@ -11,11 +11,13 @@ interface Token {
 
 @Injectable()
 export class AuthenticationService {
-  private api: string = "https://impfservice-brunner21.s1810456006.student.kwmhgb.at/api";
+  private api: string = "https://impfservice-brunner21.s1810456006.student.kwmhgb.at/api/auth";
 
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string) {
+    console.log(email);
+    console.log(password);
     return this.http.post(`${this.api}/login`, {
       email: email,
       password: password
@@ -39,7 +41,6 @@ export class AuthenticationService {
       let token = localStorage.getItem("token");
       const decodedToken = jwt_decode(token) as Token;
       let expirationDate: Date = new Date(0);
-      console.log(expirationDate);
       expirationDate.setUTCSeconds(decodedToken.exp);
       if (expirationDate < new Date()) {
         console.log("token expired");

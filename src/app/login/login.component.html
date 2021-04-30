@@ -1,41 +1,15 @@
 <br>
 <br>
-
-<!--<div class="ui middle aligned center aligned grid">
+<div class="ui middle aligned center aligned grid" *ngIf="!isLoggedIn()">
   <div class="column">
-    <form class="ui inverted large form" [formGroup]="loginForm" (ngSubmit)="login()"> 
-      <div class="ui inverted segment">
-        <h2>Einloggen & Impftermin buchen</h2>
-        <br>
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="user icon"></i>
-            <input type="email" name="email" id="username" formControlName="username" placeholder="E-mail Addresse">
-          </div>
-
-        </div>
-        <div class="field">
-          <div class="ui left icon input">
-            <i class="lock icon"></i>
-            <input type="password" name="password" placeholder="Passwort">
-          </div>
-        </div>
-        <div class="ui fluid large yellow submit button">Login</div>
-      </div>
-
-      <div class="ui error message"></div>
-
-    </form>
-  </div>
-</div>-->
-
-
-
-<div *ngIf="!isLoggedIn()">
-  <h1>Login</h1>
-  <form class="ui large form" [formGroup]="loginForm" (ngSubmit)="login()">
+  
+  <form class="ui  large form" [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="ui segment">
+      <h1>logiN</h1>
     <div class="field">
+
       <label>E-Mail</label>
+      
       <input type="email" id="username" formControlName="username">
       <div *ngIf="loginForm.get('username').invalid &&
      (loginForm.get('username').dirty || loginForm.get('username').touched) &&
@@ -54,8 +28,10 @@
         Passwort ist verpflichtend </div>
     </div>
     <button type="submit" class="ui fluid large yellow submit button" [disabled]="loginForm.invalid">Login</button>
+    </div>
   </form>
 </div>
 <div *ngIf="isLoggedIn()">
-  <button type="button" class="ui button black" (click)="logout()">Logout</button>
+  <button type="button" class="ui button" (click)="logout()">Logout</button>
+</div>
 </div>

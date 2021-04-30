@@ -1,4 +1,5 @@
 import { Component, VERSION } from "@angular/core";
+import { AuthenticationService } from "./shared/authentication.service";
 import { Vaccination } from "./shared/user";
 
 @Component({
@@ -11,14 +12,17 @@ export class AppComponent {
 
   vaccination: Vaccination;
 
-  showList() {
-    this.listOn = true;
-    this.detailsOn = false;
+  constructor(private authService: AuthenticationService) {}
+
+  isLoggedIn() {
+    return this.authService.isLoggedIn();
   }
 
-  showDetails(vaccination: Vaccination) {
-    this.vaccination = vaccination;
-    this.listOn = false;
-    this.detailsOn = true;
+  getLoginLabel() {
+    if (this.isLoggedIn()) {
+      return "Logout";
+    } else {
+      return "Login";
+    }
   }
 }
