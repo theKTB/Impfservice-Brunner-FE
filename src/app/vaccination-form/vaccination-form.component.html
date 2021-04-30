@@ -1,37 +1,42 @@
-<h1>Impfformular</h1>
+<h1>impfforMulAr</h1>
 <form
   class="ui large form"
   [formGroup]="vaccinationForm"
   (ngSubmit)="submitForm()"
 >
+  <h2>Neuen Impftermin anlegen</h2>
   <input type="hidden" name="id" />
 
   <div class="field">
-    <div class="ui calendar">
-      <div class="ui input left icon">
-        <i class="calendar icon"></i>
-        <input
-          type="text"
-          name="date_estimated_arrival"
-          placeholder="Startzeitpunkt"
-        />
-      </div>
+    <label>Start</label>
+    <input type="datetime-local" formControlName="from" />
+    <div *ngIf="errors.from" class="ui negative message">{{ errors.from }}</div>
+  </div>
+
+  <div class="field">
+    <label>Ende</label>
+    <input type="datetime-local" formControlName="to" />
+    <div *ngIf="errors.to" class="ui negative message">{{ errors.to }}</div>
+  </div>
+
+  <div class="field">
+    <label>Ort</label>
+    <select class="custom-select" formControlName="cityName">
+      <option value="" disabled>Ort auswählen</option>
+      <option *ngFor="let c of locations">{{c.city}}</option>
+    </select>
+    <div *ngIf="errors.location" class="ui negative message">
+      {{ errors.location }}
     </div>
   </div>
 
-  <!--
-<select class="custom-select" formControlName="cityName">
-   <option value="" disabled>Ort auswählen</option>
-   <option *ngFor="let c of locations" [ngValue]="c.value">{{c.city}}</option>
-</select>
-
-<div class="field">
-  <label>Startdatum</label>
-  <input formControlName="from">
-  <div *ngIf="errors.from" class="ui negative message"> {{ errors.title }} </div>
-</div>
-
--->
+  <div class="field">
+    <label>Teilnehmeranzahl</label>
+    <input type="number" formControlName="maxPatients" />
+    <div *ngIf="errors.maxPatiens" class="ui negative message">
+      {{ errors.maxPatients }}
+    </div>
+  </div>
 
   <button type="submit" class="ui button" [disabled]="vaccinationForm.invalid">
     Speichern
