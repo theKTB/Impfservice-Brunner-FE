@@ -18,6 +18,7 @@ import { LoginComponent } from "./login/login.component";
 import { AuthenticationService } from "./shared/authentication.service";
 import { TokenInterceptorService } from "./shared/token-interceptor.service";
 import { JwtInterceptorService } from "./shared/jwt-interceptor.service";
+import { VaccinationFormComponent } from './vaccination-form/vaccination-form.component';
 
 registerLocaleData(localeDe);
 
@@ -36,7 +37,8 @@ registerLocaleData(localeDe);
     VaccinationListComponent,
     VaccinationListItemComponent,
     VaccinationDetailsComponent,
-    LoginComponent
+    LoginComponent,
+    VaccinationFormComponent
   ],
   bootstrap: [AppComponent],
   providers: [VaccinationService,

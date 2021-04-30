@@ -33,8 +33,13 @@
 </div>
 
 </div>
-<h1>profil</h1>
+<div class="ui middle aligned center aligned grid" *ngIf="isLoggedIn()">
+<div class="column">
+  <h1>profil</h1>
 
-<div *ngIf="isLoggedIn()">
+  <h3>Hallo, </h3>
+
+
   <button type="button" class="ui button" (click)="logout()">Logout</button>
+</div>
 </div>
