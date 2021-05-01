@@ -4,15 +4,13 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Vaccination } from "../shared/user";
 import { VaccinationFactory } from "../shared/vaccination-factory";
 import { VaccinationValidators } from "../shared/vaccination-validators";
-import { VaccinationService } from "../shared/vaccinationservice.service";
+import { VaccinationService } from "../shared/vaccination.service";
+
 import { VaccinationFormErrorMessages } from "./vaccination-form-error-messages";
 
 
-
-
-
 @Component({
-  selector: "avs-vaccination-form",
+  selector: "vs-vaccination-form",
   templateUrl: "./vaccination-form.component.html"
 })
 export class VaccinationFormComponent implements OnInit {
@@ -91,7 +89,7 @@ export class VaccinationFormComponent implements OnInit {
     if (this.isUpdatingVaccination) {
       this.vs.updateVaccination(updatedVaccination).subscribe(
         res => {
-          this.router.navigate(["../../vaccinations", updatedVaccination.id], {
+          this.router.navigate(["../../vaccination", updatedVaccination.id], {
             relativeTo: this.route
           });
         },
@@ -101,7 +99,7 @@ export class VaccinationFormComponent implements OnInit {
       );
     } else {
       this.vs.createVaccination(updatedVaccination).subscribe(res => {
-        this.router.navigate(["../vaccinations"], { relativeTo: this.route });
+        this.router.navigate(["../vaccination"], { relativeTo: this.route });
       });
     }
   }

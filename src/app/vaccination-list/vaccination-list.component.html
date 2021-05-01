@@ -3,12 +3,12 @@
 <div *ngIf="!isLoggedIn()" class="ui icon message">
   <i class="info circle icon"></i>
   <div class="content">
-  <div class="header">
+    <div class="header">
       HINWEIS
     </div>
-     <p> Um Termine buchen zu können musst du eingeloggt sein.</p>
-     </div>
-     <a routerLink="../login" class="ui black button">Jetzt einloggen!</a>
+    <p> Um Termine buchen zu können musst du eingeloggt sein.</p>
+  </div>
+  <a routerLink="../login" class="ui black button">Jetzt einloggen!</a>
 </div>
 
 <table class="ui sortable selectable compact celled table">
@@ -23,9 +23,21 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let vaccination of vaccinations" class="vs-vaccination-list-item hoover" [vaccination]="vaccination" [routerLink]="vaccination.id"></tr>
+    <tr *ngFor="let vaccination of vaccinations" class="vs-vaccination-list-item hoover" [vaccination]="vaccination"></tr>
   </tbody>
 </table>
+
+<div *ngIf="isLoggedIn()" class="ui icon message">
+  <i class="plus circle icon"></i>
+  <div class="content">
+    <div class="header">
+      NEUER TERMIN
+    </div>
+    <p>Lege neue Termine an.</p>
+  </div>
+  <a routerLink="../vaccination" class="ui black button">Termin erstellen</a>
+</div>
+
 
 <div *ngIf="!vaccinations" class="ui active dimmer">
   <div class="ui large text loader">Daten werden geladen</div>

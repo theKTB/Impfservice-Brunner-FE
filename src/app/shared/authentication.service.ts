@@ -6,18 +6,19 @@ interface Token {
   exp: number;
   user: {
     id: string;
+    admin: string;
+    vaccinated: string;
   };
 }
 
 @Injectable()
 export class AuthenticationService {
-  private api: string = "https://impfservice-brunner21.s1810456006.student.kwmhgb.at/api/auth";
+  private api: string =
+    "https://impfservice-brunner21.s1810456006.student.kwmhgb.at/api/auth";
 
   constructor(private http: HttpClient) {}
 
   login(email: string, password: string) {
-    console.log(email);
-    console.log(password);
     return this.http.post(`${this.api}/login`, {
       email: email,
       password: password
@@ -28,6 +29,8 @@ export class AuthenticationService {
     localStorage.setItem("token", token);
     const decodedToken = jwt_decode(token) as Token;
     localStorage.setItem("userId", decodedToken.user.id);
+    localStorage.setItem("admin", decodedToken.user.admin);
+    localStorage.setItem("vaccinated", decodedToken.user.vaccinated);
   }
 
   public logout() {
@@ -48,6 +51,19 @@ export class AuthenticationService {
         return false;
       }
       return true;
+    }
+    return false;
+  }
+
+  public isAdmin() {
+    if (localStorage.getItem("token")) {
+      let token = localStorage.getItem("token");
+      const decodedToken = jwt_decode(token) as Token;
+      if (decodedToken.user.admin == "1") {
+        return true;
+      } else {
+        return false;
+      }
     }
     return false;
   }

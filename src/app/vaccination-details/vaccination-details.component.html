@@ -18,4 +18,5 @@
   </p>
 </div>
 <br>
+<button *ngIf="isLoggedIn() && isAdmin()" [routerLink]="['../../vaccination', vaccination?.id]" class="ui yellow button">Termin bearbeiten</button>
 <button routerLink=".." class="ui black button">Zurück zu den Terminen</button>

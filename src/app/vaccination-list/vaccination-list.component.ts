@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { AuthenticationService } from "../shared/authentication.service";
 import { Vaccination } from "../shared/vaccination";
-import { VaccinationService } from "../shared/vaccinationservice.service";
+import { VaccinationService } from "../shared/vaccination.service";
 
 @Component({
   selector: "vs-vaccination-list",
@@ -20,7 +20,5 @@ export class VaccinationListComponent implements OnInit {
   isLoggedIn() {
     return this.authService.isLoggedIn();
   }
-
-
   
 }

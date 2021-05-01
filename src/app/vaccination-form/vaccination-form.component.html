@@ -6,7 +6,8 @@
   [formGroup]="vaccinationForm"
   (ngSubmit)="submitForm()"
 >
-  <h2>Neuen Impftermin anlegen</h2>
+  <h2 *ngIf="isUpdatingVaccination">Impftermin bearbeiten</h2>
+  <h2 *ngIf="!isUpdatingVaccination">Neuen Impftermin anlegen</h2>
   <input type="hidden" name="id" />
 
   <div class="field">

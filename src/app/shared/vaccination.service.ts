@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
 import { catchError, retry } from "rxjs/operators";
+import { User } from "./user";
 import { Vaccination } from "./vaccination";
 
 @Injectable()
@@ -45,6 +46,14 @@ export class VaccinationService {
       .pipe(retry(3))
       .pipe(catchError(this.errorHandler));
   }
+
+  getAllUsers(): Observable<Array<User>> {
+    return this.http
+      .get<Array<User>>(`${this.api}/users`)
+      .pipe(retry(3))
+      .pipe(catchError(this.errorHandler));
+  }
+
 
   private errorHandler(error: Error | any) {
     return throwError(error);

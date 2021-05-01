@@ -8,7 +8,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { VaccinationListComponent } from "./vaccination-list/vaccination-list.component";
 import { VaccinationListItemComponent } from "./vaccination-list-item/vaccination-list-item.component";
 import { VaccinationDetailsComponent } from "./vaccination-details/vaccination-details.component";
-import { VaccinationService } from "./shared/vaccinationservice.service";
 import { registerLocaleData } from "@angular/common";
 import localeDe from "@angular/common/locales/de";
 import { LOCALE_ID } from "@angular/core";
@@ -19,6 +18,10 @@ import { AuthenticationService } from "./shared/authentication.service";
 import { TokenInterceptorService } from "./shared/token-interceptor.service";
 import { JwtInterceptorService } from "./shared/jwt-interceptor.service";
 import { VaccinationFormComponent } from './vaccination-form/vaccination-form.component';
+import { AdminComponent } from './admin/admin.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { UserService } from './shared/user.service';
+import { VaccinationService } from "./shared/vaccination.service";
 
 registerLocaleData(localeDe);
 
@@ -38,10 +41,13 @@ registerLocaleData(localeDe);
     VaccinationListItemComponent,
     VaccinationDetailsComponent,
     LoginComponent,
-    VaccinationFormComponent
+    VaccinationFormComponent,
+    AdminComponent,
+    UserListComponent
   ],
   bootstrap: [AppComponent],
   providers: [VaccinationService,
+  UserService,
     AuthenticationService,
     {
       provide: HTTP_INTERCEPTORS,
@@ -53,6 +59,6 @@ registerLocaleData(localeDe);
       useClass: JwtInterceptorService,
       multi: true
     },
-   { provide: LOCALE_ID, useValue: "de" }]
+   { provide: LOCALE_ID, useValue: "de"}]
 })
 export class AppModule {}
