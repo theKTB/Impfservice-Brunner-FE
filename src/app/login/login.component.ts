@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      username: ["", Validators.required, Validators.email],
+      username: ["", [Validators.required, Validators.email]],
       password: ["", Validators.required]
     });
   }
@@ -30,14 +30,18 @@ export class LoginComponent implements OnInit {
   login() {
     const val = this.loginForm.value;
     if (val.username && val.password) {
-      this.authService.login(val.username, val.password).subscribe(res => {
-        this.authService.setLocalStorage((res as Response).access_token);
-      },(err)=>{console.log(err)});
+      this.authService.login(val.username, val.password).subscribe(
+        res => {
+          this.authService.setLocalStorage((res as Response).access_token);
+        },
+        err => {
+          console.log(err);
+        }
+      );
     }
   }
 
   isLoggedIn() {
-    console.log(this.authService.isLoggedIn());
     return this.authService.isLoggedIn();
   }
 
