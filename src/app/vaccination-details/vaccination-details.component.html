@@ -18,5 +18,16 @@
   </p>
 </div>
 <br>
+<button *ngIf="isLoggedIn() && !isVaccinated()" [routerLink]="['../../vaccination', vaccination?.id]" class="ui {{isVaccinated()?'disabled':'yellow'}} button">Termin buchen</button>
 <button *ngIf="isLoggedIn() && isAdmin()" [routerLink]="['../../vaccination', vaccination?.id]" class="ui yellow button">Termin bearbeiten</button>
 <button routerLink=".." class="ui black button">Zurück zu den Terminen</button>
+
+<div *ngIf="isLoggedIn() && isVaccinated()" class="ui icon positive message">
+  <i class="check circle icon"></i>
+  <div class="content">
+    <div class="header">
+      DEIN TERMIN
+    </div>
+    <p>Du hast bereits deinen Termin (gehabt).</p>
+  </div>
+</div>

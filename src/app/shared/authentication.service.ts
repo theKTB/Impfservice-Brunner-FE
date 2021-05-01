@@ -68,6 +68,19 @@ export class AuthenticationService {
     return false;
   }
 
+  public isVaccinated() {
+    if (localStorage.getItem("token")) {
+      let token = localStorage.getItem("token");
+      const decodedToken = jwt_decode(token) as Token;
+      if (decodedToken.user.vaccinated == "1") {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    return false;
+  }
+
   isLoggedOut() {
     return !this.isLoggedIn();
   }

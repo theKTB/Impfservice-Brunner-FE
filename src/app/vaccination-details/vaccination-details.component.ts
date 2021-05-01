@@ -33,4 +33,8 @@ export class VaccinationDetailsComponent implements OnInit {
   isAdmin() {
     return this.authService.isAdmin();
   }
+
+  isVaccinated() {
+    return this.authService.isVaccinated();
+  }
 }

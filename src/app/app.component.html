@@ -9,7 +9,7 @@
         <i class="search link icon"></i>
       </div>
     </div>-->
-    <a *ngIf="isLoggedIn()" routerLink="admin" routerLinkActive="active" class="item">Administration</a>
+    <a *ngIf="isLoggedIn() && isAdmin()" routerLink="admin" routerLinkActive="active" class="item">Administration</a>
     <a routerLink="login" routerLinkActive="active" class="ui item"><i class="user icon"></i>
       {{getLoginLabel()}}
     </a>

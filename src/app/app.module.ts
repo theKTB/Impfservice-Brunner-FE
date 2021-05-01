@@ -22,6 +22,7 @@ import { AdminComponent } from './admin/admin.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserService } from './shared/user.service';
 import { VaccinationService } from "./shared/vaccination.service";
+import { UserListItemComponent } from './user-list-item/user-list-item.component';
 
 registerLocaleData(localeDe);
 
@@ -43,7 +44,8 @@ registerLocaleData(localeDe);
     LoginComponent,
     VaccinationFormComponent,
     AdminComponent,
-    UserListComponent
+    UserListComponent,
+    UserListItemComponent
   ],
   bootstrap: [AppComponent],
   providers: [VaccinationService,
