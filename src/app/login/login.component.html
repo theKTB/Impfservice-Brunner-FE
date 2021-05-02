@@ -33,14 +33,23 @@
 </div>
 
 </div>
-<div class="ui middle aligned center aligned grid" *ngIf="isLoggedIn()">
-<div class="column">
+<div class="" *ngIf="isLoggedIn()">
   <h1>profil</h1>
 
   <h3>Hallo {{user?.firstName}}!</h3>
   <p>Jetzt bist du angemeldet</p>
-
-
-  <button type="button" class="ui button" (click)="logout()">Logout</button>
+  <div *ngIf="!user?.vaccination_id" class="ui icon message">
+  <i class="info circle icon"></i>
+  <div class="content">
+    <div class="header">
+      
+    </div>
+    <p> Du hast leider noch keinen Impftermin.</p>
+  </div>
+  <a routerLink="../vaccinations" class="ui black button">Jetzt Termin suchen!</a>
 </div>
+
+
+  <button type="button" class="ui button red" (click)="logout()">Logout</button>
+
 </div>

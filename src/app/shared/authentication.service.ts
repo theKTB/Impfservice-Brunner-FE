@@ -55,19 +55,6 @@ export class AuthenticationService {
     return false;
   }
 
-  public isAdmin() {
-    if (localStorage.getItem("token")) {
-      let token = localStorage.getItem("token");
-      const decodedToken = jwt_decode(token) as Token;
-      if (decodedToken.user.admin == "1") {
-        return true;
-      } else {
-        return false;
-      }
-    }
-    return false;
-  }
-
   public getUserId() {
     if (localStorage.getItem("token")) {
       let token = localStorage.getItem("token");
@@ -76,19 +63,6 @@ export class AuthenticationService {
       return decodedToken.user.id;
     }
     return null;
-  }
-
-  public isVaccinated() {
-    if (localStorage.getItem("token")) {
-      let token = localStorage.getItem("token");
-      const decodedToken = jwt_decode(token) as Token;
-      if (decodedToken.user.vaccinated == "1") {
-        return true;
-      } else {
-        return false;
-      }
-    }
-    return false;
   }
 
   isLoggedOut() {

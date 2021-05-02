@@ -35,7 +35,6 @@ export class VaccinationFormComponent implements OnInit {
     const id = this.route.snapshot.params["id"];
     this.ls.getAllLocations().subscribe(locations => {
       this.locations = locations;
-      console.log(this.locations);
     })
     if (id) {
       this.isUpdatingVaccination = true;

@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AuthenticationService } from "../shared/authentication.service";
-import { Vaccination } from "../shared/user";
+import { User, Vaccination } from "../shared/user";
+import { UserService } from "../shared/user.service";
 import { VaccinationFactory } from "../shared/vaccination-factory";
 import { VaccinationService } from "../shared/vaccination.service";
 
@@ -11,12 +12,14 @@ import { VaccinationService } from "../shared/vaccination.service";
 })
 export class VaccinationDetailsComponent implements OnInit {
   vaccination: Vaccination = VaccinationFactory.empty();
+  user: User;
 
   constructor(
     private vs: VaccinationService,
     private authService: AuthenticationService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private us: UserService
   ) {}
 
   ngOnInit() {
@@ -24,18 +27,13 @@ export class VaccinationDetailsComponent implements OnInit {
     this.vs
       .getVaccination(params["id"])
       .subscribe(res => (this.vaccination = res));
+    this.us.getUser(this.authService.getUserId()).subscribe(user => {
+      this.user = user;
+    });
   }
 
   isLoggedIn() {
     return this.authService.isLoggedIn();
-  }
-
-  isAdmin() {
-    return this.authService.isAdmin();
-  }
-
-  isVaccinated() {
-    return this.authService.isVaccinated();
   }
 
   hasOpenSpots() {

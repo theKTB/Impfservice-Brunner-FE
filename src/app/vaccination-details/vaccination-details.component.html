@@ -18,11 +18,11 @@
   </p>
 </div>
 <br>
-<button *ngIf="isLoggedIn() && !isVaccinated()" [routerLink]="['../../vaccination', vaccination?.id]" class="ui {{isVaccinated() || !hasOpenSpots() ?'disabled':'yellow'}} button">Termin buchen</button>
-<button *ngIf="isLoggedIn() && isAdmin()" [routerLink]="['../../vaccination', vaccination?.id]" class="ui grey button">Termin bearbeiten</button>
+<button *ngIf="isLoggedIn()" class="ui {{user?.vaccinated || user?.vaccination_id || !hasOpenSpots() ?'disabled':'yellow'}} button">Termin buchen</button>
+<button *ngIf="isLoggedIn() && user?.admin" [routerLink]="['../../vaccination', vaccination?.id]" class="ui grey button">Termin bearbeiten</button>
 <button routerLink=".." class="ui black button">Zurück zu den Terminen</button>
 
-<div *ngIf="isLoggedIn() && isVaccinated()" class="ui icon positive message">
+<div *ngIf="user?.vaccinated || user?.vaccination_id && isLoggedIn() " class="ui icon positive message">
   <i class="check circle icon"></i>
   <div class="content">
     <div class="header">
