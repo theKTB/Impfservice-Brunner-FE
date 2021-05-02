@@ -1,6 +1,9 @@
+
 import { Component, OnInit } from "@angular/core";
 import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import { Location } from "../shared/location";
+import { LocationService } from "../shared/location.service";
 import { Vaccination } from "../shared/user";
 import { VaccinationFactory } from "../shared/vaccination-factory";
 import { VaccinationValidators } from "../shared/vaccination-validators";
@@ -18,21 +21,22 @@ export class VaccinationFormComponent implements OnInit {
   vaccination = VaccinationFactory.empty();
   isUpdatingVaccination = false;
   errors: { [key: string]: string } = {};
-  locations = [
-    { id: 1, city: "linz" },
-    { id: 2, city: "linz" },
-    { id: 3, city: "linz" }
-  ];
+  locations: Location[];
 
   constructor(
     private fb: FormBuilder,
     private vs: VaccinationService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private ls: LocationService
   ) {}
 
   ngOnInit() {
     const id = this.route.snapshot.params["id"];
+    this.ls.getAllLocations().subscribe(locations => {
+      this.locations = locations;
+      console.log(this.locations);
+    })
     if (id) {
       this.isUpdatingVaccination = true;
       this.vs.getVaccination(id).subscribe(vaccination => {

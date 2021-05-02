@@ -24,9 +24,9 @@
 
   <div class="field">
     <label>Ort</label>
-    <select class="custom-select" formControlName="cityName">
+    <select class="custom-select" formControlName="location">
       <option value="" disabled>Ort auswählen</option>
-      <option *ngFor="let c of locations">{{c.city}}</option>
+      <option *ngFor="let location of locations">{{location.name}}</option>
     </select>
     <div *ngIf="errors.location" class="ui negative message">
       {{ errors.location }}

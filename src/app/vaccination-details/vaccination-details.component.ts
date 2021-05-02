@@ -37,4 +37,8 @@ export class VaccinationDetailsComponent implements OnInit {
   isVaccinated() {
     return this.authService.isVaccinated();
   }
+
+  hasOpenSpots() {
+    return this.vaccination.maxPatients > 0;
+  }
 }

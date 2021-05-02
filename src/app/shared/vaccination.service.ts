@@ -47,13 +47,19 @@ export class VaccinationService {
       .pipe(catchError(this.errorHandler));
   }
 
+  decrementMaxPatients(id: number): Observable<any> {
+    return this.http
+      .put(`${this.api}/vaccinations/${id}`, null)
+      .pipe(retry(3))
+      .pipe(catchError(this.errorHandler));
+  }
+
   getAllUsers(): Observable<Array<User>> {
     return this.http
       .get<Array<User>>(`${this.api}/users`)
       .pipe(retry(3))
       .pipe(catchError(this.errorHandler));
   }
-
 
   private errorHandler(error: Error | any) {
     return throwError(error);

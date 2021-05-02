@@ -10,6 +10,16 @@
   </div>
   <a routerLink="../login" class="ui black button">Jetzt einloggen!</a>
 </div>
+<div *ngIf="isLoggedIn()" class="ui icon message">
+  <i class="plus circle icon"></i>
+  <div class="content">
+    <div class="header">
+      NEUER TERMIN
+    </div>
+    <p>Lege neue Termine an.</p>
+  </div>
+  <a routerLink="../vaccination" class="ui black button">Termin erstellen</a>
+</div>
 
 <table class="ui sortable selectable compact celled table">
   <thead>
@@ -26,17 +36,6 @@
     <tr *ngFor="let vaccination of vaccinations" class="vs-vaccination-list-item hoover" [vaccination]="vaccination"></tr>
   </tbody>
 </table>
-
-<div *ngIf="isLoggedIn()" class="ui icon message">
-  <i class="plus circle icon"></i>
-  <div class="content">
-    <div class="header">
-      NEUER TERMIN
-    </div>
-    <p>Lege neue Termine an.</p>
-  </div>
-  <a routerLink="../vaccination" class="ui black button">Termin erstellen</a>
-</div>
 
 
 <div *ngIf="!vaccinations" class="ui active dimmer">

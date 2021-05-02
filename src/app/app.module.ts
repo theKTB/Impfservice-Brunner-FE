@@ -17,12 +17,13 @@ import { LoginComponent } from "./login/login.component";
 import { AuthenticationService } from "./shared/authentication.service";
 import { TokenInterceptorService } from "./shared/token-interceptor.service";
 import { JwtInterceptorService } from "./shared/jwt-interceptor.service";
-import { VaccinationFormComponent } from './vaccination-form/vaccination-form.component';
-import { AdminComponent } from './admin/admin.component';
-import { UserListComponent } from './user-list/user-list.component';
-import { UserService } from './shared/user.service';
+import { VaccinationFormComponent } from "./vaccination-form/vaccination-form.component";
+import { AdminComponent } from "./admin/admin.component";
+import { UserListComponent } from "./user-list/user-list.component";
+import { UserService } from "./shared/user.service";
 import { VaccinationService } from "./shared/vaccination.service";
-import { UserListItemComponent } from './user-list-item/user-list-item.component';
+import { UserListItemComponent } from "./user-list-item/user-list-item.component";
+import { LocationService } from "./shared/location.service";
 
 registerLocaleData(localeDe);
 
@@ -48,8 +49,10 @@ registerLocaleData(localeDe);
     UserListItemComponent
   ],
   bootstrap: [AppComponent],
-  providers: [VaccinationService,
-  UserService,
+  providers: [
+    VaccinationService,
+    UserService,
+    LocationService,
     AuthenticationService,
     {
       provide: HTTP_INTERCEPTORS,
@@ -61,6 +64,7 @@ registerLocaleData(localeDe);
       useClass: JwtInterceptorService,
       multi: true
     },
-   { provide: LOCALE_ID, useValue: "de"}]
+    { provide: LOCALE_ID, useValue: "de" }
+  ]
 })
 export class AppModule {}
