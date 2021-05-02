@@ -19,6 +19,12 @@ export class AppComponent {
 
   constructor(private authService: AuthenticationService, private us: UserService) {}
 
+  /*ngOnInit() {
+    this.us.getUser(this.authService.getUserId()).subscribe(user => {
+      this.user = user;
+    });
+  }*/
+
   isLoggedIn() {
     return this.authService.isLoggedIn();
   }
@@ -29,7 +35,7 @@ export class AppComponent {
 
   getLoginLabel() {
     if (this.isLoggedIn()) {
-  
+      //return this.user.firstName;
       return "Logout";
     } else {
       return "Login";
