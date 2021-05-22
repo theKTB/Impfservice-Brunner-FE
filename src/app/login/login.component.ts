@@ -37,18 +37,16 @@ export class LoginComponent implements OnInit {
       this.authService.login(val.username, val.password).subscribe(
         res => {
           this.authService.setLocalStorage((res as Response).access_token);
+          this.us.getUser(this.authService.getUserId()).subscribe(user => {
+            this.user = user;
+            console.log(user);
+          });
         },
         err => {
           console.log(err);
         }
       );
     }
-  }
-
-  setUser() {
-    this.us.getUser(this.authService.getUserId()).subscribe(user => {
-      this.user = user;
-    });
   }
 
   isLoggedIn() {

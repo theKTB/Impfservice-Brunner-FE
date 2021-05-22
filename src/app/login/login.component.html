@@ -36,9 +36,8 @@
 <div class="" *ngIf="isLoggedIn()">
   <h1>profil</h1>
 
-  <h3>Hallo {{user?.firstName}}!</h3>
-  <p>Jetzt bist du angemeldet</p>
-  <div *ngIf="!user?.vaccination" class="ui icon message">
+  <h3>Hallo, schön, dass du da bist {{user?.firstName}}!</h3>
+  <div *ngIf="user?.vaccination" class="ui icon message">
   <i class="info circle icon"></i>
   <div class="content">
     <div class="header">

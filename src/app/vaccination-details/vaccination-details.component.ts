@@ -46,7 +46,7 @@ export class VaccinationDetailsComponent implements OnInit {
       this.vs
         .associateVaccination(this.user.id, vaccinationId)
         .subscribe(res =>
-          this.router.navigate(['../'], { relativeTo: this.route })
+          this.router.navigate(['../../vaccinations'], { relativeTo: this.route })
         );
     }
   }
