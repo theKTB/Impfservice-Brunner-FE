@@ -12,21 +12,21 @@
 
   <div class="field">
     <label>Start</label>
-    <input type="datetime" formControlName="from" />
+    <input type="datetime-local" formControlName="from" />
     <div *ngIf="errors.from" class="ui negative message">{{ errors.from }}</div>
   </div>
 
   <div class="field">
     <label>Ende</label>
-    <input type="datetime" formControlName="to" />
+    <input type="datetime-local" formControlName="to" />
     <div *ngIf="errors.to" class="ui negative message">{{ errors.to }}</div>
   </div>
 
   <div class="field">
     <label>Ort</label>
-    <select class="custom-select" formControlName="location">
+    <select class="custom-select" formControlName="location" placeholder="Impfort auswählen">
       <option value="" disabled>Ort auswählen</option>
-      <option *ngFor="let location of locations">{{location.name}}</option>
+      <option *ngFor="let location of locations" [ngValue]="location.id">{{location.name}}</option>
     </select>
     <div *ngIf="errors.location" class="ui negative message">
       {{ errors.location }}
@@ -35,7 +35,7 @@
 
   <div class="field">
     <label>Teilnehmeranzahl</label>
-    <input type="number" formControlName="maxPatients" />
+    <input type="number" min="0" formControlName="maxPatients" />
     <div *ngIf="errors.maxPatiens" class="ui negative message">
       {{ errors.maxPatients }}
     </div>
