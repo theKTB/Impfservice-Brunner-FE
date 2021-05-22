@@ -1,14 +1,14 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
-import { AuthenticationService } from "../shared/authentication.service";
-import { User, Vaccination } from "../shared/user";
-import { UserService } from "../shared/user.service";
-import { VaccinationFactory } from "../shared/vaccination-factory";
-import { VaccinationService } from "../shared/vaccination.service";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthenticationService } from '../shared/authentication.service';
+import { User, Vaccination } from '../shared/user';
+import { UserService } from '../shared/user.service';
+import { VaccinationFactory } from '../shared/vaccination-factory';
+import { VaccinationService } from '../shared/vaccination.service';
 
 @Component({
-  selector: "vs-vaccination-details",
-  templateUrl: "./vaccination-details.component.html"
+  selector: 'vs-vaccination-details',
+  templateUrl: './vaccination-details.component.html'
 })
 export class VaccinationDetailsComponent implements OnInit {
   vaccination: Vaccination = VaccinationFactory.empty();
@@ -25,7 +25,7 @@ export class VaccinationDetailsComponent implements OnInit {
   ngOnInit() {
     const params = this.route.snapshot.params;
     this.vs
-      .getVaccination(params["id"])
+      .getVaccination(params['id'])
       .subscribe(res => (this.vaccination = res));
     this.us.getUser(this.authService.getUserId()).subscribe(user => {
       this.user = user;
@@ -38,5 +38,16 @@ export class VaccinationDetailsComponent implements OnInit {
 
   hasOpenSpots() {
     return this.vaccination.maxPatients > 0;
+  }
+
+  bookVaccination() {
+    if (confirm('Möchtest du dich wirklich für diesen Termin anmelden?')) {
+      let vaccinationId = this.route.snapshot.params['id'];
+      this.vs
+        .associateVaccination(this.user.id, vaccinationId)
+        .subscribe(res =>
+          this.router.navigate(['../'], { relativeTo: this.route })
+        );
+    }
   }
 }

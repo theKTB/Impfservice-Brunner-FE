@@ -3,6 +3,7 @@ export { Vaccination } from "./vaccination";
 
 export class User {
   constructor(
+    public id: string,
     public socialNumber: string,
     public firstName: string,
     public lastName: string,

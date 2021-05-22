@@ -19,7 +19,8 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "admin", component: AdminComponent },
   { path: "admin/:id", component: VaccinationFactory },
-  { path: "users", component: UserListComponent }
+  { path: "users", component: UserListComponent },
+  { path: "vaccinations/:id/book", component: VaccinationDetailsComponent },
 ];
 
 @NgModule({

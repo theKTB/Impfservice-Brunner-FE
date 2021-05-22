@@ -47,6 +47,13 @@ export class VaccinationService {
       .pipe(catchError(this.errorHandler));
   }
 
+  associateVaccination(userId, vaccinationId): Observable<any> {
+    return this.http
+      .put(`${this.api}/vaccinations/${vaccinationId}/book`, {userId, vaccinationId})
+      .pipe(retry(3))
+      .pipe(catchError(this.errorHandler));
+  }
+
   decrementMaxPatients(id: number): Observable<any> {
     return this.http
       .put(`${this.api}/vaccinations/${id}`, null)

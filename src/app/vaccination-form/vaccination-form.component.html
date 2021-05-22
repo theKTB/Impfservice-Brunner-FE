@@ -12,13 +12,13 @@
 
   <div class="field">
     <label>Start</label>
-    <input type="datetime-local" formControlName="from" />
+    <input type="datetime" formControlName="from" />
     <div *ngIf="errors.from" class="ui negative message">{{ errors.from }}</div>
   </div>
 
   <div class="field">
     <label>Ende</label>
-    <input type="datetime-local" formControlName="to" />
+    <input type="datetime" formControlName="to" />
     <div *ngIf="errors.to" class="ui negative message">{{ errors.to }}</div>
   </div>
 
