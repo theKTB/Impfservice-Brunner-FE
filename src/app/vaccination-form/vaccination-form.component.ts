@@ -60,7 +60,7 @@ export class VaccinationFormComponent implements OnInit {
         [Validators.required, VaccinationValidators.datePast]
       ],
       maxPatients: this.vaccination.maxPatients,
-      location: this.vaccination.location
+      location_id: this.vaccination.location
     });
     this.vaccinationForm.statusChanges.subscribe(() => {
       this.updateErrorMessages();
@@ -101,7 +101,7 @@ export class VaccinationFormComponent implements OnInit {
       );
     } else {
       this.vs.createVaccination(updatedVaccination).subscribe(res => {
-        this.router.navigate(["../vaccinations"], { relativeTo: this.route });
+        this.router.navigate(["../vaccination"], { relativeTo: this.route });
       });
     }
   }

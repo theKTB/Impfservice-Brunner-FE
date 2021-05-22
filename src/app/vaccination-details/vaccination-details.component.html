@@ -23,8 +23,8 @@
 </div>
 <br>
 
-<button *ngIf="isLoggedIn()" class="ui {{user?.vaccinated || user?.vaccination_id || !hasOpenSpots() ?'disabled':'yellow'}} button" (click)="bookVaccination()">Termin buchen</button> 
-<span *ngIf="user?.vaccinated || user?.vaccination_id && isLoggedIn()" data-tooltip="
+<button *ngIf="isLoggedIn()" class="ui {{user?.vaccinated || user?.vaccination || !hasOpenSpots() ?'disabled':'yellow'}} button" (click)="bookVaccination()">Termin buchen</button> 
+<span *ngIf="user?.vaccinated || user?.vaccination && isLoggedIn()" data-tooltip="
 Du hast bereits einen Termin gebucht" data-position="right center" data-inverted=""><i class="info icon"></i></span>
 
 <br><br>

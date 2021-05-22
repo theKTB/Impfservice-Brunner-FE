@@ -20,7 +20,7 @@ export class UserService {
 
   getUser(id: string): Observable<User> {
     return this.http
-      .get<User>(`${this.api}/users/${id}`)
+      .get<User>(`${this.api}/user/${id}`)
       .pipe(retry(3))
       .pipe(catchError(this.errorHandler));
   }

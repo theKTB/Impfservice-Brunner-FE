@@ -21,49 +21,35 @@ export class VaccinationService {
 
   getVaccination(id: string): Observable<Vaccination> {
     return this.http
-      .get<Vaccination>(`${this.api}/vaccinations/${id}`)
+      .get<Vaccination>(`${this.api}/vaccination/${id}`)
       .pipe(retry(3))
       .pipe(catchError(this.errorHandler));
   }
 
   removeVaccination(id: string): Observable<any> {
     return this.http
-      .delete(`${this.api}/vaccinations/${id}`)
+      .delete(`${this.api}/vaccination/${id}`)
       .pipe(retry(3))
       .pipe(catchError(this.errorHandler));
   }
 
   createVaccination(vaccination: Vaccination): Observable<any> {
     return this.http
-      .post(`${this.api}/vaccinations`, vaccination)
+      .post(`${this.api}/vaccination`, vaccination)
       .pipe(retry(3))
       .pipe(catchError(this.errorHandler));
   }
 
   updateVaccination(vaccination: Vaccination): Observable<any> {
     return this.http
-      .put(`${this.api}/vaccinations/${vaccination.id}`, vaccination)
+      .put(`${this.api}/vaccination/${vaccination.id}`, vaccination)
       .pipe(retry(3))
       .pipe(catchError(this.errorHandler));
   }
 
   associateVaccination(userId, vaccinationId): Observable<any> {
     return this.http
-      .put(`${this.api}/vaccinations/${vaccinationId}/book`, {userId, vaccinationId})
-      .pipe(retry(3))
-      .pipe(catchError(this.errorHandler));
-  }
-
-  decrementMaxPatients(id: number): Observable<any> {
-    return this.http
-      .put(`${this.api}/vaccinations/${id}`, null)
-      .pipe(retry(3))
-      .pipe(catchError(this.errorHandler));
-  }
-
-  getAllUsers(): Observable<Array<User>> {
-    return this.http
-      .get<Array<User>>(`${this.api}/users`)
+      .put(`${this.api}/vaccination/${vaccinationId}/book`, {userId, vaccinationId})
       .pipe(retry(3))
       .pipe(catchError(this.errorHandler));
   }
