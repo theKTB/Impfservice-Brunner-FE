@@ -1,14 +1,12 @@
-import { Component, VERSION } from "@angular/core";
-import { ToastrService } from "ngx-toastr";
-import { AuthenticationService } from "./shared/authentication.service";
-import { User, Vaccination } from "./shared/user";
-import { UserService } from "./shared/user.service";
-
-
+import { Component, VERSION } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { AuthenticationService } from './shared/authentication.service';
+import { User, Vaccination } from './shared/user';
+import { UserService } from './shared/user.service';
 
 @Component({
-  selector: "vs-root",
-  templateUrl: "./app.component.html"
+  selector: 'vs-root',
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
   listOn = true;
@@ -17,13 +15,10 @@ export class AppComponent {
 
   vaccination: Vaccination;
 
-  constructor(private authService: AuthenticationService, private us: UserService) {}
+  constructor(
+    private authService: AuthenticationService
+  ) {}
 
-  /*ngOnInit() {
-    this.us.getUser(this.authService.getUserId()).subscribe(user => {
-      this.user = user;
-    });
-  }*/
 
   isLoggedIn() {
     return this.authService.isLoggedIn();
@@ -31,10 +26,9 @@ export class AppComponent {
 
   getLoginLabel() {
     if (this.isLoggedIn()) {
-      //return this.user.firstName;
-      return "Logout";
+      return 'Logout';
     } else {
-      return "Login";
+      return 'Login';
     }
   }
 }
