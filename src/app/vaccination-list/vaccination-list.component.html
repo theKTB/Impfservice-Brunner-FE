@@ -1,5 +1,16 @@
 <h1>impf&shy;termine</h1>
 
+<div *ngIf="user?.vaccinated || user?.vaccination_id && isLoggedIn() " class="ui icon positive message">
+  <i class="check circle icon"></i>
+  <div class="content">
+    <div class="header">
+      DEIN TERMIN
+    </div>
+    <p>Du hast bereits deinen Termin gebucht.</p>
+  </div>
+</div>
+
+
 <div *ngIf="!isLoggedIn()" class="ui icon message">
   <i class="info circle icon"></i>
   <div class="content">

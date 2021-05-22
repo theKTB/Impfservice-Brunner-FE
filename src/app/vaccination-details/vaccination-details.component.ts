@@ -50,4 +50,14 @@ export class VaccinationDetailsComponent implements OnInit {
         );
     }
   }
+
+  removeVaccination() {
+    if (confirm('Möchtest du den Termin wirklich löschen?')) {
+      this.vs
+        .removeVaccination(this.vaccination.id)
+        .subscribe(res =>
+          this.router.navigate(['../'], { relativeTo: this.route })
+        );
+    }
+  }
 }

@@ -1,5 +1,9 @@
 <h1>impftermin</h1>
 
+<a routerLink=".." class="ui"><i class="arrow left
+ icon"></i> Zurück zu den Terminen</a>
+ <br><br>
+
 <div class="ui container">
   <h2>Datum</h2>
   <p>{{vaccination?.from | date:'EEEE dd. MMMM yyyy'}} von {{vaccination?.from | date:'HH:mm'}} Uhr bis
@@ -18,16 +22,13 @@
   </p>
 </div>
 <br>
-<button *ngIf="isLoggedIn()" class="ui {{user?.vaccinated || user?.vaccination_id || !hasOpenSpots() ?'disabled':'yellow'}} button" (click)="bookVaccination()">Termin buchen</button>
-<button *ngIf="isLoggedIn() && user?.admin" [routerLink]="['../../vaccination', vaccination?.id]" class="ui grey button">Termin bearbeiten</button>
-<button routerLink=".." class="ui black button">Zurück zu den Terminen</button>
 
-<div *ngIf="user?.vaccinated || user?.vaccination_id && isLoggedIn() " class="ui icon positive message">
-  <i class="check circle icon"></i>
-  <div class="content">
-    <div class="header">
-      DEIN TERMIN
-    </div>
-    <p>Du hast bereits deinen Termin (gehabt).</p>
-  </div>
-</div>
+<button *ngIf="isLoggedIn()" class="ui {{user?.vaccinated || user?.vaccination_id || !hasOpenSpots() ?'disabled':'yellow'}} button" (click)="bookVaccination()">Termin buchen</button> 
+<span *ngIf="user?.vaccinated || user?.vaccination_id && isLoggedIn()" data-tooltip="
+Du hast bereits einen Termin gebucht" data-position="right center" data-inverted=""><i class="info icon"></i></span>
+
+<br><br>
+
+<button *ngIf="isLoggedIn() && user?.admin" [routerLink]="['../../vaccination', vaccination?.id]" class="ui black button">Termin bearbeiten</button>
+
+<button *ngIf="isLoggedIn() && user?.admin"  class="ui red button" (click)="removeVaccination()">Termin löschen</button>

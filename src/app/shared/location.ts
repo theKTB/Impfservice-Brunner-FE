@@ -1,6 +1,6 @@
 export class Location {
   constructor(
-    public id: number,
+    public id: string,
     public name: string,
     public street: string,
     public houseNumber: string,

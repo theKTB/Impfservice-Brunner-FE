@@ -19,14 +19,14 @@ export class VaccinationService {
       .pipe(catchError(this.errorHandler));
   }
 
-  getVaccination(id: number): Observable<Vaccination> {
+  getVaccination(id: string): Observable<Vaccination> {
     return this.http
       .get<Vaccination>(`${this.api}/vaccinations/${id}`)
       .pipe(retry(3))
       .pipe(catchError(this.errorHandler));
   }
 
-  removeVaccination(id: Number): Observable<any> {
+  removeVaccination(id: string): Observable<any> {
     return this.http
       .delete(`${this.api}/vaccinations/${id}`)
       .pipe(retry(3))
