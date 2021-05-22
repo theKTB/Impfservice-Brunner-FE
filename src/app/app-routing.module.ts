@@ -13,14 +13,14 @@ const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
   { path: "home", component: HomeComponent },
   { path: "vaccinations", component: VaccinationListComponent },
-  { path: "vaccinations/:id", component: VaccinationDetailsComponent },
+  { path: "vaccination/:id", component: VaccinationDetailsComponent },
   { path: "vaccination", component: VaccinationFormComponent },
   { path: "vaccination/:id", component: VaccinationFormComponent },
   { path: "login", component: LoginComponent },
   { path: "admin", component: AdminComponent },
   { path: "admin/:id", component: VaccinationFactory },
   { path: "users", component: UserListComponent },
-  { path: "vaccinations/:id/book", component: VaccinationDetailsComponent },
+  { path: "vaccination/:id/book", component: VaccinationDetailsComponent },
 ];
 
 @NgModule({
