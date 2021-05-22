@@ -15,11 +15,15 @@ export class AppComponent {
 
   vaccination: Vaccination;
 
-  constructor(
-    private authService: AuthenticationService
-  ) {}
+   constructor(private authService: AuthenticationService, private us: UserService) {}
 
 
+  ngOnInit() {
+    this.us.getUser(this.authService.getUserId()).subscribe(user => {
+      this.user = user;
+    });
+  }
+  
   isLoggedIn() {
     return this.authService.isLoggedIn();
   }

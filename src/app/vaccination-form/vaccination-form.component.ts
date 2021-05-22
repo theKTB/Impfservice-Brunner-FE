@@ -33,6 +33,7 @@ export class VaccinationFormComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.params["id"];
+    console.log("Termin Id ist: " + id);
     this.ls.getAllLocations().subscribe(locations => {
       this.locations = locations;
     })
@@ -40,6 +41,7 @@ export class VaccinationFormComponent implements OnInit {
       this.isUpdatingVaccination = true;
       this.vs.getVaccination(id).subscribe(vaccination => {
         this.vaccination = vaccination;
+        console.log(this.vaccination);
         this.initVaccination();
       });
     }
@@ -50,11 +52,11 @@ export class VaccinationFormComponent implements OnInit {
     this.vaccinationForm = this.fb.group({
       id: this.vaccination.id,
       from: [
-        this.vaccination.from,
+        //from.toISOString(),
         [Validators.required, VaccinationValidators.datePast]
       ],
       to: [
-        this.vaccination.to,
+        //this.vaccination.to.toISOString().substring(0, 16),
         [Validators.required, VaccinationValidators.datePast]
       ],
       maxPatients: this.vaccination.maxPatients,
@@ -82,6 +84,7 @@ export class VaccinationFormComponent implements OnInit {
   }
 
   submitForm() {
+    
     console.log(this.vaccinationForm.value);
 
     const updatedVaccination: Vaccination = VaccinationFactory.fromObject(
@@ -102,7 +105,7 @@ export class VaccinationFormComponent implements OnInit {
       );
     } else {
       this.vs.createVaccination(updatedVaccination).subscribe(res => {
-        this.router.navigate(["../vaccination"], { relativeTo: this.route });
+        this.router.navigate(["../vaccinations"], { relativeTo: this.route });
       });
     }
   }
