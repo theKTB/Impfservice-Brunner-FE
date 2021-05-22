@@ -12,7 +12,7 @@ export class User {
     public admin?: boolean,
     public vaccinated?: boolean,
     public gender?: string,
-    public vaccination_id?: number,
+    public vaccination_id?: string,
     public phone?: string,
     public street?: string,
     public houseNumber?: string,

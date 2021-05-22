@@ -86,11 +86,7 @@ export class VaccinationFormComponent implements OnInit {
   submitForm() {
     
     console.log(this.vaccinationForm.value);
-
-    const updatedVaccination: Vaccination = VaccinationFactory.fromObject(
-      this.vaccinationForm.value
-    );
-    console.log(updatedVaccination);
+    const updatedVaccination: Vaccination = VaccinationFactory.fromObject(this.vaccinationForm.value);
 
     if (this.isUpdatingVaccination) {
       this.vs.updateVaccination(updatedVaccination).subscribe(
