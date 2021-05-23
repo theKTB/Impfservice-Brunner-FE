@@ -60,7 +60,7 @@ export class VaccinationFormComponent implements OnInit {
         [Validators.required, VaccinationValidators.datePast]
       ],
       maxPatients: this.vaccination.maxPatients,
-      location_id: this.vaccination.location
+      location: this.vaccination.location
     });
     this.vaccinationForm.statusChanges.subscribe(() => {
       this.updateErrorMessages();
@@ -87,6 +87,8 @@ export class VaccinationFormComponent implements OnInit {
     
     console.log(this.vaccinationForm.value);
     const updatedVaccination: Vaccination = VaccinationFactory.fromObject(this.vaccinationForm.value);
+
+    console.log (updatedVaccination);
 
     if (this.isUpdatingVaccination) {
       this.vs.updateVaccination(updatedVaccination).subscribe(
