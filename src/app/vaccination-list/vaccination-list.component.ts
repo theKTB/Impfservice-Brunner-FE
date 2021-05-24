@@ -18,12 +18,17 @@ export class VaccinationListComponent implements OnInit {
 
   ngOnInit() {
     this.vs.getAllVaccinations().subscribe(res => (this.vaccinations = res));
-    this.us.getUser(this.authService.getUserId()).subscribe(user => {
-      this.user = user;})
+    let userId = this.authService.getUserId();
+    if (userId){
+      this.us.getUser(userId).subscribe(user => {
+      this.user = user;});
+    }
   }
 
   isLoggedIn() {
-    return this.authService.isLoggedIn();
+   
+      return this.authService.isLoggedIn();
+  
   }
   
 }

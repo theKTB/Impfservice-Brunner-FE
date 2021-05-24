@@ -61,11 +61,9 @@ export class AuthenticationService {
     if (localStorage.getItem("token")) {
       let token = localStorage.getItem("token");
       const decodedToken = jwt_decode(token) as Token;
-      console.log ("Abfrage Userid");
       return decodedToken.user.id;
     }
-    console.log("Go to Login");
-    //return null;
+    return null;
   }
 
   isLoggedOut() {

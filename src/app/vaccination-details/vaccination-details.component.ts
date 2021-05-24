@@ -27,13 +27,15 @@ export class VaccinationDetailsComponent implements OnInit {
     this.vs
       .getVaccination(params['id'])
       .subscribe(res => (this.vaccination = res));
-    this.us.getUser(this.authService.getUserId()).subscribe(user => {
-      this.user = user;
-    });
+      let userId = this.authService.getUserId();
+      if (userId){
+      this.us.getUser(userId).subscribe(user => {
+      this.user = user;});
+    }
   }
 
   isLoggedIn() {
-    return this.authService.isLoggedIn();
+      return this.authService.isLoggedIn();
   }
 
   hasOpenSpots() {

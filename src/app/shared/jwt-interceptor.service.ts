@@ -23,7 +23,7 @@ export class JwtInterceptorService
          // redirect to the login route
          // or show a modal
          // http://jasonwatmore.com/post/2016/09/29/angular-2-user-registration-and-login-example-tutorial
-         console.log("error");
+         //TODO: hier was machen
          //alert("Invalid login");
        }
      }
