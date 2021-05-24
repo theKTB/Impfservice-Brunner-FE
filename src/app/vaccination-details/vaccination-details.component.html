@@ -40,6 +40,32 @@ Du hast bereits einen Termin gebucht" data-position="right center" data-inverted
 
 <br><br>
 
-<button *ngIf="isLoggedIn() && user?.admin" [routerLink]="['../../vaccination', vaccination?.id]" class="ui black button">Termin bearbeiten</button>
+<div *ngIf="isLoggedIn() && user?.admin">
+  <div class="ui divider"></div>
+  <h2 class="ui header">Admin</h2>
+<button [routerLink]="['../../vaccination', vaccination?.id]" class="ui black button">Termin bearbeiten</button>
 
-<button *ngIf="isLoggedIn() && user?.admin"  class="ui red button" (click)="removeVaccination()">Termin löschen</button>
+<button class="ui red button" (click)="removeVaccination()">Termin löschen</button>
+
+<table class="ui sortable selectable compact celled table">
+  <thead>
+    <tr><th colspan="4">
+      Angemeldete Personen
+    </th>
+  </tr>
+    <tr>
+      <th>Geimpft?</th>
+      <th>Vorname</th>
+      <th>Nachname</th>
+      <th>Sozialversicherungsnummer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of vaccination?.users" class="vs-user-list-item hoover" [user]="user"></tr>
+  </tbody>
+</table>
+
+
+
+</div>
+
