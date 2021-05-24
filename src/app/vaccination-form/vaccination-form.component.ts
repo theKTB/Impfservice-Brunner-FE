@@ -71,11 +71,11 @@ export class VaccinationFormComponent implements OnInit {
     this.vaccinationForm = this.fb.group({
       id: this.vaccination.id,
       from: [this.localFromString,
-        [Validators.required, VaccinationValidators.datePast]
+        [Validators.required]
       ],
       to: [
         this.localToString,
-        [Validators.required, VaccinationValidators.datePast]
+        [Validators.required]
       ],
       maxPatients: this.vaccination.maxPatients,
       location: this.vaccination.location_id

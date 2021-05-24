@@ -12,11 +12,4 @@ export class VaccinationValidators {
     return from >= new Date() ? null : {dateFrom:{valid:false}};
   }
 
-  /*static isbnExists(bs : BookStoreService) {
-  return function(control: FormControl): Observable<{[error: string]: any}> {
-   return bs.check(control.value)
-     .pipe(map(exists => !exists ? null : {isbnExists: {valid: false}}));
- }
-}*/
-
 }
