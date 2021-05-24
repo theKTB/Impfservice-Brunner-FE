@@ -26,12 +26,14 @@ export class VaccinationDetailsComponent implements OnInit {
     const params = this.route.snapshot.params;
     this.vs
       .getVaccination(params['id'])
-      .subscribe(res => (this.vaccination = res));
+      .subscribe(res => {console.log(res); this.vaccination = res;});
       let userId = this.authService.getUserId();
       if (userId){
       this.us.getUser(userId).subscribe(user => {
       this.user = user;});
+      console.log(this.vaccination);
     }
+    
   }
 
   isLoggedIn() {
