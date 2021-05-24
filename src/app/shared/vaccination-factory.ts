@@ -2,8 +2,12 @@ import { Vaccination } from "./vaccination";
 
 export class VaccinationFactory {
   static empty(): Vaccination {
-    //TODO: Kann ich hier bei der Location Null mitgeben, wenn das DB-Feld nicht nullable ist?
-    return new Vaccination(null, null, null, 0, null, null);
+    let year = new Date().getFullYear();
+    let month = new Date().getMonth();
+    let day = new Date().getDate();
+    let hour = new Date().getHours();
+  
+    return new Vaccination(null, new Date(year, month, day, hour), new Date(year, month, day, hour+1), 0, null, null);
   }
 
   static fromObject(rawVaccination: any): Vaccination {

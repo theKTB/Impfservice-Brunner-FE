@@ -45,7 +45,6 @@ export class VaccinationFormComponent implements OnInit {
       this.isUpdatingVaccination = true;
       this.vs.getVaccination(id).subscribe(vaccination => {
         this.vaccination = vaccination;
-        console.log(this.vaccination);
         this.initVaccination();
       });
     }
