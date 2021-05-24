@@ -30,6 +30,12 @@ export class LoginComponent implements OnInit {
       username: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
+    let userId = this.authService.getUserId();
+      if (userId){
+      this.us.getUser(userId).subscribe(user => {
+      this.user = user;}
+      );}
+      
   }
 
   login() {
@@ -40,7 +46,6 @@ export class LoginComponent implements OnInit {
           this.authService.setLocalStorage((res as Response).access_token);
           this.us.getUser(this.authService.getUserId()).subscribe(user => {
             this.user = user;
-            console.log(user);
           });
         },
         err => {

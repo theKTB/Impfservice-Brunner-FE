@@ -43,7 +43,10 @@ export class VaccinationDetailsComponent implements OnInit {
   }
 
   isBookedVaccination() {
-    return this.route.snapshot.params['id'] == this.user.vaccination.id;
+    if(this.user){
+      return this.route.snapshot.params['id'] == this.user.vaccination.id;
+    }
+    return false;
   }
 
   bookVaccination() {
