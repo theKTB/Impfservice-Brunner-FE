@@ -21,7 +21,7 @@ export class VaccinationService {
 
   getVaccination(id: string): Observable<Vaccination> {
     return this.http
-      .get<Vaccination>(`${this.api}/vaccination/${id}`)
+      .get<Vaccination>(`${this.api}/vaccinations/${id}`)
       .pipe(retry(3))
       .pipe(catchError(this.errorHandler));
   }

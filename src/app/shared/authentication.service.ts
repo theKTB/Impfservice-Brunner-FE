@@ -30,7 +30,6 @@ export class AuthenticationService {
     const decodedToken = jwt_decode(token) as Token;
     localStorage.setItem("userId", decodedToken.user.id);
     localStorage.setItem("admin", decodedToken.user.admin);
-    localStorage.setItem("vaccinated", decodedToken.user.vaccinated);
   }
 
   public logout() {
@@ -38,7 +37,6 @@ export class AuthenticationService {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     localStorage.removeItem("admin");
-    localStorage.removeItem("vaccinated");
   }
 
   public isLoggedIn() {
@@ -50,6 +48,8 @@ export class AuthenticationService {
       if (expirationDate < new Date()) {
         console.log("token expired");
         localStorage.removeItem("token");
+        localStorage.removeItem("userId");
+        localStorage.removeItem("admin");
         return false;
       }
       return true;
@@ -61,9 +61,11 @@ export class AuthenticationService {
     if (localStorage.getItem("token")) {
       let token = localStorage.getItem("token");
       const decodedToken = jwt_decode(token) as Token;
+      console.log ("Abfrage Userid");
       return decodedToken.user.id;
     }
-    return null;
+    console.log("Go to Login");
+    //return null;
   }
 
   isLoggedOut() {

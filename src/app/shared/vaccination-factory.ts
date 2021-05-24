@@ -3,7 +3,7 @@ import { Vaccination } from "./vaccination";
 export class VaccinationFactory {
   static empty(): Vaccination {
     //TODO: Kann ich hier bei der Location Null mitgeben, wenn das DB-Feld nicht nullable ist?
-    return new Vaccination(null, null, null, 0, null);
+    return new Vaccination(null, null, null, 0, null, null);
   }
 
   static fromObject(rawVaccination: any): Vaccination {
@@ -12,7 +12,8 @@ export class VaccinationFactory {
       rawVaccination.from,
       rawVaccination.to,
       rawVaccination.maxParticipants,
-      rawVaccination.location
+      rawVaccination.location,
+      rawVaccination.location_id
     );
   }
 }
