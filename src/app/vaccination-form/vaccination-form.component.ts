@@ -78,7 +78,7 @@ export class VaccinationFormComponent implements OnInit {
         [Validators.required, VaccinationValidators.datePast]
       ],
       maxPatients: this.vaccination.maxPatients,
-      location: this.vaccination.location
+      location: this.vaccination.location_id
     });
     this.vaccinationForm.statusChanges.subscribe(() => {
       this.updateErrorMessages();
