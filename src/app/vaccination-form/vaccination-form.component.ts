@@ -22,6 +22,10 @@ export class VaccinationFormComponent implements OnInit {
   isUpdatingVaccination = false;
   errors: { [key: string]: string } = {};
   locations: Location[];
+  localFromDate: Date;
+  localFromString: string;
+  localToDate: Date;
+  localToString: string;
 
   constructor(
     private fb: FormBuilder,
@@ -48,15 +52,29 @@ export class VaccinationFormComponent implements OnInit {
     this.initVaccination();
   }
 
+  // Tansforms date into ISO string including timezone information
+  toISOLocal(d) {
+    const z = n => ('0' + n).slice(-2);
+    let off = d.getTimezoneOffset();
+    const sign = off < 0 ? '+' : '-';
+    off = Math.abs(off);
+    return new Date(d.getTime() - (d.getTimezoneOffset() * 60000)).toISOString().slice(0, -1) + sign + z(off / 60 | 0) + ':' + z(off % 60);
+  }
+
   initVaccination() {
+    //preparing dates
+    this.localFromDate = new Date(this.vaccination.from);
+    this.localFromString = this.toISOLocal(this.localFromDate).slice(0,-6);
+    this.localToDate = new Date(this.vaccination.to);
+    this.localToString = this.toISOLocal(this.localToDate).slice(0,-6);
+
     this.vaccinationForm = this.fb.group({
       id: this.vaccination.id,
-      from: [
-        this.vaccination.from,
+      from: [this.localFromString,
         [Validators.required, VaccinationValidators.datePast]
       ],
       to: [
-        this.vaccination.to,
+        this.localToString,
         [Validators.required, VaccinationValidators.datePast]
       ],
       maxPatients: this.vaccination.maxPatients,
@@ -84,26 +102,25 @@ export class VaccinationFormComponent implements OnInit {
   }
 
   submitForm() {
-    
-    console.log(this.vaccinationForm.value);
-    const updatedVaccination: Vaccination = VaccinationFactory.fromObject(this.vaccinationForm.value);
+    const val = this.vaccinationForm.value;
 
-    console.log (updatedVaccination);
+    // manuelles Mapping notwendig
+    this.vaccination.from = val.from;
+    this.vaccination.to = val.to;
+    this.vaccination.location_id = val.location;
+    this.vaccination.maxPatients = val.maxPatients;
 
     if (this.isUpdatingVaccination) {
-      this.vs.updateVaccination(updatedVaccination).subscribe(
-        res => {
-          this.router.navigate(["../../vaccination", updatedVaccination.id], {
-            relativeTo: this.route
-          });
-        },
-        err => {
-          //TODO sinnvolle Fehlermeldung
-        }
-      );
+      this.vs.updateVaccination(this.vaccination).subscribe(res => {
+        this.router.navigate(['../../vaccinations', this.vaccination.id], {
+          relativeTo: this.route
+        });
+      });
     } else {
-      this.vs.createVaccination(updatedVaccination).subscribe(res => {
-        this.router.navigate(["../vaccination"], { relativeTo: this.route });
+      this.vs.createVaccination(this.vaccination).subscribe(res => {
+        this.router.navigate(['../vaccinations'], {
+          relativeTo: this.route
+        });
       });
     }
   }
