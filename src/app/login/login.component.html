@@ -37,7 +37,7 @@
   <h1>profil</h1>
 
   <h3>Hallo, {{user?.firstName}}!</h3>
-  <div *ngIf="user?.vaccination" class="ui icon message">
+  <div *ngIf="!user?.vaccination" class="ui icon message">
   <i class="info circle icon"></i>
   <div class="content">
     <div class="header">
@@ -48,7 +48,7 @@
   <a routerLink="../vaccinations" class="ui black button">Jetzt Termin suchen!</a>
 </div>
 
-<div *ngIf="!user?.vaccination" class="ui icon positive message">
+<div *ngIf="user?.vaccination" class="ui icon positive message">
   <i class="check circle icon"></i>
   <div class="content">
     <div class="header">

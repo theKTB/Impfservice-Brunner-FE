@@ -31,11 +31,11 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
     let userId = this.authService.getUserId();
-      if (userId){
+    if (userId) {
       this.us.getUser(userId).subscribe(user => {
-      this.user = user;}
-      );}
-      
+        this.user = user;
+      });
+    }
   }
 
   login() {
@@ -54,7 +54,6 @@ export class LoginComponent implements OnInit {
       );
     }
   }
-
 
   isLoggedIn() {
     return this.authService.isLoggedIn();

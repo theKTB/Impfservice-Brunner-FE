@@ -30,6 +30,11 @@ export class AppComponent {
     return this.authService.isLoggedIn();
   }
 
+  getAdminState() {
+    if(this.user != null)
+      return this.user.admin;
+  }
+
   getLoginLabel() {
     if (this.isLoggedIn()) {
       return 'Logout';
