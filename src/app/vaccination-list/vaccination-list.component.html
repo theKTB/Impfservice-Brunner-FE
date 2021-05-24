@@ -4,10 +4,11 @@
   <i class="check circle icon"></i>
   <div class="content">
     <div class="header">
-      DEIN TERMIN
+      GRATULATION
     </div>
-    <p>Du hast bereits deinen Termin gebucht.</p>
+    <p>Du hast bereits einen Termin gebucht.</p>
   </div>
+  <a [routerLink]="['../vaccinations', user?.vaccination?.id]" class="ui green button">Zum Termin</a>
 </div>
 
 

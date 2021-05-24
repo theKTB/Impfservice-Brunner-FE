@@ -42,6 +42,10 @@ export class VaccinationDetailsComponent implements OnInit {
     return this.vaccination.maxPatients > 0;
   }
 
+  isBookedVaccination() {
+    return this.route.snapshot.params['id'] == this.user.vaccination.id;
+  }
+
   bookVaccination() {
     if (confirm('Möchtest du dich wirklich für diesen Termin anmelden?')) {
       let vaccinationId = this.route.snapshot.params['id'];

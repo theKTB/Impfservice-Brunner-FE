@@ -4,6 +4,17 @@
  icon"></i> Zurück zu den Terminen</a>
  <br><br>
 
+
+ <div *ngIf="isLoggedIn() && isBookedVaccination" class="ui icon positive message">
+  <i class="calendar check icon"></i>
+  <div class="content">
+    <div class="header">
+      DEIN TERMIN
+    </div>
+    <p>Du hast diesen Termin gebucht.</p>
+  </div>
+</div>
+
 <div class="ui container">
   <h2>Datum</h2>
   <p>{{vaccination?.from | date:'EEEE dd. MMMM yyyy'}} von {{vaccination?.from | date:'HH:mm'}} Uhr bis

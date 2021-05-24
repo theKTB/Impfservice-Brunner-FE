@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../shared/authentication.service';
 import { User } from '../shared/user';
 import { UserService } from '../shared/user.service';
@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private route: ActivatedRoute,
     private router: Router,
     private authService: AuthenticationService,
     private us: UserService
@@ -48,6 +49,7 @@ export class LoginComponent implements OnInit {
       );
     }
   }
+
 
   isLoggedIn() {
     return this.authService.isLoggedIn();
