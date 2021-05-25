@@ -1,5 +1,5 @@
 <td class="collapsing">
-  <button class="ui {{user?.vaccinated ?'disabled':'green'}} button" (click)=vaccinate(1)>Impfen</button>
+  <button class="ui {{user?.vaccinated ?'disabled':'green'}} button" (click)="vaccinate()">Impfen</button>
 </td>
 <td>{{user?.firstName}}</td>
 <td>{{user?.lastName}}</td>

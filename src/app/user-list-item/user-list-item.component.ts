@@ -15,14 +15,14 @@ export class UserListItemComponent implements OnInit {
     private authService: AuthenticationService,
     private us: UserService,
     private route: ActivatedRoute,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit() {}
 
-  vaccinate(userId){
-    this.us.vaccinate(userId);
+  vaccinate() {
+    this.us.vaccinate(this.user.id).subscribe(res => {
+      this.ngOnInit();
+    });
   }
-
-
 }
