@@ -13,7 +13,10 @@ export class UserListComponent implements OnInit {
   constructor(private us: UserService, private authService: AuthenticationService) { }
 
   ngOnInit() {
-    this.us.getAllUsers().subscribe(res => (this.users = res));
+    this.us.getAllUsers().subscribe(res => {
+        this.users = res;
+        console.log(this.users);
+      });
   }
 
   isLoggedIn() {

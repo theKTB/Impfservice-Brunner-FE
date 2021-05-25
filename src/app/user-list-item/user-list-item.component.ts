@@ -9,6 +9,7 @@ import { UserService } from '../shared/user.service';
   templateUrl: './user-list-item.component.html'
 })
 export class UserListItemComponent implements OnInit {
+  loggedInUser: User;
   @Input() user: User;
 
   constructor(
@@ -21,11 +22,12 @@ export class UserListItemComponent implements OnInit {
   ngOnInit() {
     let userId = this.authService.getUserId();
     if (userId) {
-      this.us.getUser(userId).subscribe(user => {
-        this.user = user;
+      this.us.getUser(userId).subscribe(res => {
+        console.log(res);
+        this.loggedInUser = res;
       });
     }
-    //console.log(this.user);
+    
   }
 
 
