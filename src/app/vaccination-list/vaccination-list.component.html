@@ -22,7 +22,8 @@
   </div>
   <a routerLink="../login" class="ui black button">Jetzt einloggen!</a>
 </div>
-<div *ngIf="isLoggedIn()" class="ui icon message">
+
+<div *ngIf="isLoggedIn() && user?.admin" class="ui icon message">
   <i class="plus circle icon"></i>
   <div class="content">
     <div class="header">

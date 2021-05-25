@@ -26,9 +26,7 @@ export class VaccinationListComponent implements OnInit {
   }
 
   isLoggedIn() {
-   
       return this.authService.isLoggedIn();
-  
   }
   
 }

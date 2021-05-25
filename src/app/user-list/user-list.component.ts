@@ -14,7 +14,11 @@ export class UserListComponent implements OnInit {
 
   ngOnInit() {
     this.us.getAllUsers().subscribe(res => {
-        this.users = res;
+        for(let user of res){
+          if(user.vaccination){
+            this.users.push(user);
+          }
+        }
         console.log(this.users);
       });
   }
