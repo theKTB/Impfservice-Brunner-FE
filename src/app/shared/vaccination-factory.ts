@@ -7,7 +7,7 @@ export class VaccinationFactory {
     let day = new Date().getDate();
     let hour = new Date().getHours();
   
-    return new Vaccination(null, new Date(year, month, day, hour+1), new Date(year, month, day, hour+2), 0, null, null, null);
+    return new Vaccination(null, new Date(year, month, day, hour+1), new Date(year, month, day, hour+2), null, null, null, null);
   }
 
   static fromObject(rawVaccination: any): Vaccination {
