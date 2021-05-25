@@ -9,7 +9,6 @@ import { UserService } from '../shared/user.service';
   templateUrl: './user-list-item.component.html'
 })
 export class UserListItemComponent implements OnInit {
-  loggedInUser: User;
   @Input() user: User;
 
   constructor(
@@ -19,15 +18,10 @@ export class UserListItemComponent implements OnInit {
     private router: Router,
   ) {}
 
-  ngOnInit() {
-    let userId = this.authService.getUserId();
-    if (userId) {
-      this.us.getUser(userId).subscribe(res => {
-        console.log(res);
-        this.loggedInUser = res;
-      });
-    }
-    
+  ngOnInit() {}
+
+  vaccinate(userId){
+    this.us.vaccinate(userId);
   }
 
 
