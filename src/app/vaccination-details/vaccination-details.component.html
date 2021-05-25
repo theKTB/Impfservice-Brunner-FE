@@ -16,18 +16,18 @@
 </div>
 
 <div class="ui container">
-  <h2>Datum</h2>
+  <h3>Datum</h3>
   <p>{{vaccination?.from | date:'EEEE dd. MMMM yyyy'}} von {{vaccination?.from | date:'HH:mm'}} Uhr bis
     {{vaccination?.to | date:'HH:mm'}} Uhr</p>
 
-  <h2>Ort</h2>
+  <h3>Ort</h3>
   <p>
     {{vaccination?.location?.name}}<br>
 {{vaccination?.location?.street}} {{vaccination?.location?.houseNumber}}<br>
 {{vaccination?.location?.zipCode}} {{vaccination?.location?.city}}<br>
   </p>
 
-  <h2>Freie Plätze</h2>
+  <h3>Freie Plätze</h3>
   <p>
     {{vaccination?.maxPatients}}
   </p>
