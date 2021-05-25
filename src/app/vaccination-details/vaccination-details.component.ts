@@ -24,20 +24,19 @@ export class VaccinationDetailsComponent implements OnInit {
 
   ngOnInit() {
     const params = this.route.snapshot.params;
-    this.vs
-      .getVaccination(params['id'])
-      .subscribe(res => {console.log(res); this.vaccination = res;});
-      let userId = this.authService.getUserId();
-      if (userId){
+    this.vs.getVaccination(params['id']).subscribe(res => {
+      this.vaccination = res;
+    });
+    let userId = this.authService.getUserId();
+    if (userId) {
       this.us.getUser(userId).subscribe(user => {
-      this.user = user;});
-      console.log(this.vaccination);
+        this.user = user;
+      });
     }
-    
   }
 
   isLoggedIn() {
-      return this.authService.isLoggedIn();
+    return this.authService.isLoggedIn();
   }
 
   hasOpenSpots() {
@@ -45,7 +44,7 @@ export class VaccinationDetailsComponent implements OnInit {
   }
 
   isBookedVaccination() {
-    if(this.user != null && this.user.vaccination != null){
+    if (this.user != null && this.user.vaccination != null) {
       return this.route.snapshot.params['id'] == this.user.vaccination.id;
     }
     return false;
@@ -57,7 +56,9 @@ export class VaccinationDetailsComponent implements OnInit {
       this.vs
         .associateVaccination(this.user.id, vaccinationId)
         .subscribe(res =>
-          this.router.navigate(['../../vaccinations'], { relativeTo: this.route })
+          this.router.navigate(['../../vaccinations'], {
+            relativeTo: this.route
+          })
         );
     }
   }

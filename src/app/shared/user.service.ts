@@ -25,6 +25,13 @@ export class UserService {
       .pipe(catchError(this.errorHandler));
   }
 
+  vaccinate(userId: string): Observable<any> {
+    return this.http
+      .put(`${this.api}/user/${userId}`, {userId})
+      .pipe(retry(3))
+      .pipe(catchError(this.errorHandler));
+  }
+
   private errorHandler(error: Error | any) {
     return throwError(error);
   }
